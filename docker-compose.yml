@@ -1,0 +1,26 @@
+site1:
+  image: httpd:2.4
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /path/to/site-1:/usr/local/apache2/htdocs
+site2:
+  image: httpd:2.4
+  restart: always
+  expose:
+    - "80"
+  volumes:
+    - /path/to/site-2:/usr/local/apache2/htdocs
+reverse-proxy:
+  build: ./
+  restart: always
+  links:
+    - site1
+    - site2
+  ports:
+    - "80:80"
+  volumes:
+    - ./sites/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    - ./sites/site-1.conf:/etc/apache2/sites-available/site-1.conf
+    - ./sites/site-2.conf:/etc/apache2/sites-available/site-2.conf
