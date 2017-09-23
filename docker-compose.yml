@@ -21,6 +21,6 @@ reverse-proxy:
   ports:
     - "80:80"
   volumes:
-    - ./sites/000-default.conf:/etc/apache2/sites-available/000-default.conf
-    - ./sites/site-1.conf:/etc/apache2/sites-available/site-1.conf
-    - ./sites/site-2.conf:/etc/apache2/sites-available/site-2.conf
+    - ./vhosts/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    - ./vhosts/site-1.conf:/etc/apache2/sites-available/site-1.conf
+    - ./vhosts/site-2.conf:/etc/apache2/sites-available/site-2.conf
