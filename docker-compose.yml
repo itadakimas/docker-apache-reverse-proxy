@@ -1,11 +1,11 @@
-site1:
+site_1:
   image: httpd:2.4
   restart: always
   expose:
     - "80"
   volumes:
     - /path/to/site-1:/usr/local/apache2/htdocs
-site2:
+site_2:
   image: httpd:2.4
   restart: always
   expose:
@@ -16,8 +16,8 @@ reverse-proxy:
   build: ./
   restart: always
   links:
-    - site1
-    - site2
+    - site_1
+    - site_2
   ports:
     - "80:80"
   volumes:
